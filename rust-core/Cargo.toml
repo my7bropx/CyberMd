@@ -4,6 +4,7 @@ members = [
     "cybermd-parser",
     "cybermd-ast",
     "cybermd-highlighter",
+    "cybermd-renderer",
     "cybermd-ffi",
 ]
 

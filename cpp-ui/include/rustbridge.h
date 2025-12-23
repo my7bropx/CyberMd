@@ -77,6 +77,16 @@ public:
 
     CAST* get() const { return handle_; }
 
+    std::string toHtml() const {
+        char* html_cstr = cybermd_render_html(handle_);
+        if (!html_cstr) {
+            return std::string();
+        }
+        std::string html(html_cstr);
+        cybermd_free_string(html_cstr);
+        return html;
+    }
+
 private:
     CAST* handle_;
 };

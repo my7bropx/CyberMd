@@ -215,6 +215,23 @@ void cybermd_highlighter_free(CHighlighter* highlighter);
 void cybermd_highlight_array_free(CHighlightArray* array);
 
 // ============================================================================
+// HTML RENDERER API
+// ============================================================================
+
+/**
+ * Render AST to HTML
+ * @param ast AST handle
+ * @return HTML string (must be freed with cybermd_free_string) or NULL on error
+ */
+char* cybermd_render_html(const CAST* ast);
+
+/**
+ * Free a string returned by the library
+ * @param s String to free
+ */
+void cybermd_free_string(char* s);
+
+// ============================================================================
 // VERSION INFO
 // ============================================================================
 

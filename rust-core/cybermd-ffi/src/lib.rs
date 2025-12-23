@@ -10,6 +10,7 @@
 
 use cybermd_core::{DocumentAnalyzer, ASTWalker};
 use cybermd_highlighter::{SemanticHighlighter, ColorTheme, HighlightRange, TokenType};
+use cybermd_renderer::HtmlRenderer;
 use cybermd_parser::MarkdownParser;
 use cybermd_ast::ASTNode;
 use std::ffi::{CStr, CString};
@@ -366,6 +367,36 @@ pub unsafe extern "C" fn cybermd_highlight_array_free(array: *mut CHighlightArra
     if !array.is_null() {
         let array = Box::from_raw(array);
         let _ = Vec::from_raw_parts(array.ranges, array.count, array.count);
+    }
+}
+
+// ============================================================================
+// HTML RENDERER API
+// ============================================================================
+
+/// Render AST to HTML
+/// Returns a C string containing HTML (must be freed with cybermd_free_string)
+#[no_mangle]
+pub unsafe extern "C" fn cybermd_render_html(ast: *const CAST) -> *mut c_char {
+    if ast.is_null() {
+        return ptr::null_mut();
+    }
+
+    let ast_ref = &(*ast).ast;
+    let mut renderer = HtmlRenderer::new();
+    let html = renderer.render(ast_ref);
+
+    match CString::new(html) {
+        Ok(c_str) => c_str.into_raw(),
+        Err(_) => ptr::null_mut(),
+    }
+}
+
+/// Free a C string returned by the library
+#[no_mangle]
+pub unsafe extern "C" fn cybermd_free_string(s: *mut c_char) {
+    if !s.is_null() {
+        let _ = CString::from_raw(s);
     }
 }
 

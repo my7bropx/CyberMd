@@ -13,5 +13,6 @@ cybermd-core = { path = "../cybermd-core" }
 cybermd-ast = { path = "../cybermd-ast" }
 cybermd-parser = { path = "../cybermd-parser" }
 cybermd-highlighter = { path = "../cybermd-highlighter" }
+cybermd-renderer = { path = "../cybermd-renderer" }
 libc = { workspace = true }
 serde_json = { workspace = true }

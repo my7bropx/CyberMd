@@ -4,7 +4,7 @@
 //! from a token stream.
 
 use crate::tokenizer::{Token, TokenType, Tokenizer};
-use cybermd_ast::{ASTNode, Position};
+use cybermd_ast::ASTNode;
 
 /// Markdown parser
 pub struct MarkdownParser {
@@ -349,7 +349,7 @@ impl MarkdownParser {
         let end_pos = self.peek().map(|t| t.position);
 
         // For now, store as paragraph child in blockquote
-        let mut blockquote = ASTNode::Blockquote {
+        let blockquote = ASTNode::Blockquote {
             children: vec![ASTNode::new_paragraph(text)],
             start_pos,
             end_pos,
