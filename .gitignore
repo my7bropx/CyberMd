@@ -1,61 +1,43 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# PyQt5
-*.qrc
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
+# --- OS / Editor ---
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
 
-# Virtual Environment
-venv/
-env/
-ENV/
+# --- Cache / Indexes ---
+.cache/
+**/.cache/
+.clangd/
+**/.clangd/
+compile_commands.json
 
-# Settings
-*.ini
-.settings/
+# --- CMake / builds ---
+build/
+**/build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.ninja
+.ninja_*
+compile_commands.json
 
-# Logs
-*.log
+# --- Qt ---
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*.pro.user
+*.qmlc
+*.jsc
+.qt/
+**/.qt/
 
-# Rust
-rust-core/target/
-Cargo.lock
+# --- Rust ---
+target/
+**/target/
+Cargo.lock  # (OPTIONAL: keep it if this is an app; ignore only if it's a library workspace)
 
-# C++
-cpp-ui/build/
-cpp-ui/CMakeFiles/
-cpp-ui/cmake-build-*/
-*.o
-*.so
-*.dylib
-*.dll
-*.a
